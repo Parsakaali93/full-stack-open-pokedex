@@ -28,8 +28,9 @@ const App = () => {
 
   if (match && match.params) {
     const pokemonId = pokemonList.find(({ name }) => name === match.params.name).id
-    previous = pokemonList.find(({ id }) => id === pokemonId - 1)
-    next = pokemonList.find(({ id }) => id === pokemonId + 1)
+    console.log(pokemonList.length)
+    previous = pokemonList.find(({ id }) => id === Math.max(pokemonId - 1, 1))
+    next = pokemonList.find(({ id }) => id === Math.min(pokemonId + 1, pokemonList.length))
   }
 
   return (
